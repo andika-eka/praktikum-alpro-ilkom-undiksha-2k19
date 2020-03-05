@@ -1,0 +1,3 @@
+tugas pertama
+membuat kalkulator berbasis DOS
+diinput secara langsung melalui cmd dengan memanfaatkan command line argument.
