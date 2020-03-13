@@ -9,7 +9,6 @@ void input(int num, string fname, string arg){
     string nama, nis, text, numStr, thlStr;
     int thl;
     char jkl;
-
     cout <<"nama :";
     getline(cin,nama);
     
@@ -21,9 +20,11 @@ void input(int num, string fname, string arg){
     cin>>thl;
 
     if((nis.size()!=7)||(!((jkl=='L')||(jkl=='l')||(jkl=='p')||(jkl='P')))){
+        CsvFile.close();
         cout<<endl<<"input tidak valid"<<endl
             <<"nis harus tujuh digit"<<endl
-            <<"jenis kelamin L/P";
+            <<"jenis kelamin L/P"<<endl;
+        cin.ignore();
         input(num,fname,arg);
     }
     else{
@@ -37,7 +38,9 @@ void input(int num, string fname, string arg){
             text= numStr+"; "+nis+"; "+nama+"; "+jkl+"; "+thlStr; 
         }
         CsvFile<< text;
+        CsvFile.close();
     }
+    
 }
 
 void newCsv(string Fname){
@@ -46,10 +49,12 @@ void newCsv(string Fname){
         cout << "FIlE dengan nama :"<< Fname << " sudah ada";
     }
     else{
-        cout << " membuat file :"<< Fname;
+        cout << " membuat file :"<< Fname<<endl;
         CsvFile.open(Fname, ios::out | ios::app);
         CsvFile<<"NO; NIS; NAMA; JENIS KELAMIN; TAHUN ";
+
     }
+    
     CsvFile.close();
 }
 
@@ -69,6 +74,7 @@ void appendCsv(string fname){
         if(numStr=="NO"){num = 0;}
         else{num=stoi(numStr);}
         num++;
+        cin.ignore();
         input(num,fname,"a");
     }
     else{
