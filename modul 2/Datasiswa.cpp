@@ -46,6 +46,14 @@ int main(int argc, char *argv[]){
             //cout << "melihat data siswa no :"<<NoS << "file :" << CsvFile;
             viewNo(CsvFile+".csv",NoS);
         }
+        else if (cmd == "-n") {
+            // cout << " membuat file :"<< CsvFile ;
+            newCsv(CsvFile+".csv");
+
+            for (int i=1;i<=NoS;i++){
+                appendCsv(CsvFile+".csv");
+            }
+        }
         
         else {cout << "INPUT TIDAK VALID"<< endl << " \"ketik Datasiswa -help\" untuk bantuan";}
         
@@ -63,7 +71,7 @@ int main(int argc, char *argv[]){
                 <<"datasiswa -d namafile nomor = menghapus data salah satu siswa"<<endl
                 <<"datasiswa -v namafile nomor = melihat data salah satu siswa";
         }
-        
+         else {cout << "INPUT TIDAK VALID"<< endl << " \"ketik Datasiswa -help\" untuk bantuan";}
     }
     
     else {cout << "INPUT TIDAK VALID"<< endl << " \"ketik Datasiswa -help\" untuk bantuan";}
