@@ -83,7 +83,7 @@ int main(int argc, char *argv[]){
 
     if(valid_input){
         int days = Hari(tgl,bln,tahun);
-        cout<< days;
+//         cout<< days;
         //harus dimulai dari 1 january 1950
         string wara_7List[7]={"radite","soma","anggara","budha","respati","sukra","saniscara"},
         wara_5List[5]={"wage", "kliwon","umanis","paing","pon"},
