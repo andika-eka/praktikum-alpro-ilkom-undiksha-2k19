@@ -13,10 +13,6 @@ string rep_getline(FILE* file, int *c ) {
 
       if(*c != EOF) {buffer[pos++] = (char)*c;}
       
-      if(pos >= size - 1) { 
-        size *=2;
-        buffer = (char*)realloc(buffer, size);
-      }
     }while(*c != EOF && *c != '\n');   
     buffer[pos] = 0;
     string text = string (buffer);         
