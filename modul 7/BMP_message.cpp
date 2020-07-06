@@ -419,11 +419,11 @@ void put_lrc(string fname){
     FILE *BMP_file = fopen(file, "rb");
     unsigned short lrc = 0xffff;
 
-    unsigned int width;
-    FILE *temp_header = fopen("temp", "w");
-    header(BMP_file, temp_header, &width);
-    fclose(temp_header); 
-    remove("temp");
+    unsigned int width;                         //
+    FILE *temp_header = fopen("temp", "w");     //sometimes caused bugs
+    header(BMP_file, temp_header, &width);      //which takes forever to track down
+    fclose(temp_header);                        //i hate this language  
+    remove("temp");                             //
 
 
     while(!feof(BMP_file)){
