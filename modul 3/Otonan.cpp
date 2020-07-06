@@ -1,22 +1,28 @@
 #include <iostream>
 #include <cstdlib>
 #include <string>
+#include <conio.h>
 using namespace std;
 
 int kabisat(int start, int stop){
+	//menghitung jumlah tahun kabisat
     int days = (stop/4)-(start/4);
     days-=(stop/100)-(start/100);
     days +=(stop/400)-(start/400);
     return days;
 }
 int Tahun(int start, int stop){
+	//menghitung jumlah hari 
     int days = 365*(stop-start);
     days +=kabisat(start,stop-1);
     return days;
 }
 
 int Hari(int tgl, int bln, int tahun){
-    bool kabisat;
+	//menghitung jumlah hari dari 1 january 1950
+	
+	
+    bool kabisat;// chekc apakah kabisat
     if (tahun %4 ==0){
         kabisat=true;
         if(tahun%100==0){
@@ -25,16 +31,15 @@ int Hari(int tgl, int bln, int tahun){
             }
     }else  {kabisat=false;}
 
-    int days_monthRev[12]={0,31,61,92,122,153,184,204,235,265,296,324};
-    int Days_month[12]={0,31,59,90,120,151,181,212,243,273,304,334};
-    // if(tahun>=1950){
+    int Days_month[12]={0,31,59,90,120,151,181,212,243,273,304,334}; //jumlah hari sejak 1 januari
+ 
         int days;
         tgl--;
         if (bln<=2){
-            days = Days_month[bln-1]+tgl;
+            days = Days_month[bln]+tgl;
         }
         else{
-            days= Days_month[bln-1]+tgl;
+            days= Days_month[bln]+tgl;
             if(kabisat){days++;}
         }
     if(tahun>=1950){days+=Tahun(1950,tahun);}
@@ -54,7 +59,7 @@ int bulan (string bln){
         }
         bulan =13;
     }
-    return bulan+1;
+    return bulan;
 }
 
 int main(int argc, char *argv[]){
@@ -89,8 +94,7 @@ int main(int argc, char *argv[]){
 
     if(valid_input){
         int days = Hari(tgl,bln,tahun);
-        // cout<< days;
-        //harus dimulai dari 1 january 1950
+        
         string wara_7List[7]={"radite","soma","anggara","budha","respati","sukra","saniscara"},
         wara_5List[5]={"wage", "kliwon","umanis","paing","pon"},
         wukuList[30]={"kuningan","langkir","medangsia","pujut","pahang","krulut","merakih","tambir","medangkungan","matal",
@@ -107,7 +111,8 @@ int main(int argc, char *argv[]){
         
             x=(days/7)%30;
             wuku=wukuList[x];
-        }else{
+        }
+		else{
              int x = days%7;
             wara_7=wara_7List[7-x];
         
@@ -124,6 +129,7 @@ int main(int argc, char *argv[]){
             <<"hari di input seperti contoh : 1 january 2000"<<endl
             <<"hari yang di input tidak boleh sebelum 1 january 1950";
     }
-    
+    getch ();
     return 0;
 }
+//author : P andika EP 1915101029
