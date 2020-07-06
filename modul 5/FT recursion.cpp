@@ -9,6 +9,7 @@ struct orang{
 };
 
 orang CsvToArr (FILE* file, bool *stop){
+	//mengubah data dalam file csv menjadi array of struct
 	orang array;
 	string buffer;
 	int stop1;
@@ -32,13 +33,14 @@ orang CsvToArr (FILE* file, bool *stop){
 }
 
 int ID_tracker(orang Ftree[], int index){
+	//menghitung jumlah keturunan secara recursive 
 	int decendant=0;
 
 	for(int i=0;i<50;i++){
 		if (Ftree[i].id_ayah == index){
-			cout<<Ftree[i].nama<<endl;
+			cout<<Ftree[i].nama<<endl;// print nama keturunan
 			decendant++;
-			int child = ID_tracker(Ftree,i);
+			int child = ID_tracker(Ftree,i);// recursion
 			decendant += child;
 		} 
 	}
@@ -51,7 +53,7 @@ int main(){
 	int stop1, decendant;
 	orang norse_god[50];
 	bool stop=true;
-	rep_getline(Ftree, &stop1);
+	rep_getline(Ftree, &stop1);	//get rid of the header
 	
 	int index=0;
 	
@@ -63,7 +65,7 @@ int main(){
 	cout << "masukan index: ";
 	cin >> index;
 	cout << "keturunan "<<norse_god[index].nama<<" :"<<endl;
-	decendant = ID_tracker(norse_god, index);
+	decendant = ID_tracker(norse_god, index);			//LET THE FUCKIN SHOW BEGIN
 	cout << " jumlah keturunan :"<<decendant<<endl;
 	
 	return 0;
