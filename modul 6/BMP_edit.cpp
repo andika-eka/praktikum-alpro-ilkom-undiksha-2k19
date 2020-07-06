@@ -1,5 +1,4 @@
 #include <iostream>
-#include <cstdlib>
 #include <string>
 using namespace std;
 
@@ -106,6 +105,9 @@ void To_negative(string fname){
     
     copy_header(image, copy_image, &width);
     int padding_size = width % 4;
+	//padding digunakan setiap baris bisa dibagi 4 byte
+	//1 pixel megunakan 3 byte
+	
     
     while(true){
         if (feof(image)){
@@ -122,6 +124,7 @@ void To_negative(string fname){
             fwrite(&data, 1 , sizeof(char) , copy_image );
         }
         for(int i = 0; i< padding_size; i++){
+			
             fread(&padding, sizeof(char), 1, image);
             fwrite(&padding, 1 ,sizeof(char), copy_image);
         }  
