@@ -22,7 +22,8 @@ orang CsvToArr (FILE* file, bool *stop){
 		int comma1 = rep_find(buffer,',', 0),
     	comma2 = rep_find(buffer,',', comma1+1),
     	line = rep_find(buffer,'\n',comma2+1);
-    
+    	
+	//format data: index, nama, ID_ayah
     	array.nama=rep_substr(buffer,comma1+1, comma2-(comma1+2));
     	string Strid = rep_substr(buffer, comma2+1, line-(comma2+2));
     	array.id_ayah=atoi(&Strid[0]);
@@ -49,7 +50,7 @@ int ID_tracker(orang Ftree[], int index){
 
 int main(){
 	FILE* Ftree;
-	Ftree = fopen("norse gods family tree.csv","r");
+	Ftree = fopen("norse gods family tree.csv","r");// HAIL FOR THE MIGHTY ODIN
 	int stop1, decendant;
 	orang norse_god[50];
 	bool stop=true;
